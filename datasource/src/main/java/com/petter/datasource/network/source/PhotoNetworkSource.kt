@@ -3,8 +3,10 @@ package com.petter.datasource.network.source
 import com.petter.datasource.network.service.PhotoApi
 import com.petter.entity.Photo
 import com.petter.usecase.repository.PhotoNetworkRepository
+import javax.inject.Inject
 
-class PhotoNetworkSource(private val photoApi: PhotoApi) : PhotoNetworkRepository {
+class PhotoNetworkSource @Inject constructor(private val photoApi: PhotoApi) :
+    PhotoNetworkRepository {
     override suspend fun fetchPhotos(): List<Photo> {
         return photoApi.fetchPhotos().map {
             return emptyList()
