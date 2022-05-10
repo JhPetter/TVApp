@@ -7,6 +7,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyTVApp" />
+        android:theme="@style/Theme.MyTVApp">
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+    </application>
 
 </manifest>
