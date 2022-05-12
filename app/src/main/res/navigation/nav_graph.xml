@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navSplash">
+    <fragment
+        android:id="@+id/navSplash"
+        android:name="com.petter.mytvapp.ui.splash.SplashFragment">
+        <action
+            android:id="@+id/navSplashOpenHome"
+            app:destination="@+id/navHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/navHome"
+        android:name="com.petter.mytvapp.ui.main.HomeFragment">
+        <action
+            android:id="@+id/navHomeOpenDetail"
+            app:destination="@+id/navDetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navDetail"
+        android:name="com.petter.mytvapp.ui.detail.DetailFragment">
+
+    </fragment>
+
+</navigation>
