@@ -52,13 +52,14 @@ class HomeFragment : VerticalGridSupportFragment() {
         setOnItemViewClickedListener { itemViewHolder, item, rowViewHolder, row ->
             println("Here: setOnItemViewClickedListener")
             if (item is Photo) {
-                val action = HomeFragmentDirections.navHomeOpenDetail(item)
+                val photos: List<Photo> = mAdapter.getAllItems() as List<Photo>
+                val action = HomeFragmentDirections.navHomeOpenDetail(0, photos.toTypedArray())
+
                 findNavController().navigate(
                     action,
                     NavOptions.Builder().setPopUpTo(R.id.navDetail, true).build()
                 )
             }
-
         }
     }
 

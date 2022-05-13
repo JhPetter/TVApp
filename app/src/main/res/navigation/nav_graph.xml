@@ -21,8 +21,11 @@
         android:id="@+id/navDetail"
         android:name="com.petter.mytvapp.ui.detail.DetailFragment">
         <argument
-            android:name="item"
-            app:argType="com.petter.entity.Photo" />
+            android:name="currentPosition"
+            app:argType="integer" />
+        <argument
+            android:name="photos"
+            app:argType="com.petter.entity.Photo[]" />
     </fragment>
 
 </navigation>
