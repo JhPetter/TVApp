@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19135802469135801" />
+        <entry key="app/src/main/res/layout/card_loading_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/card_photo_view.xml" value="0.13709677419354838" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.375" />

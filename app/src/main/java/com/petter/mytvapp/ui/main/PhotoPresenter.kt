@@ -22,19 +22,22 @@ class PhotoPresenter : Presenter() {
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, item: Any) {
-        val photo = item as Photo
-        with(viewHolder.view as PhotoCardView) {
-            val posterWidth = resources.getDimension(R.dimen.poster_width).toInt()
-            val posterHeight = resources.getDimension(R.dimen.poster_height).toInt()
+        println("Here: onBindViewHolder $item")
+        if (item is Photo) {
+            with(viewHolder.view as PhotoCardView) {
+                val posterWidth = resources.getDimension(R.dimen.poster_width).toInt()
+                val posterHeight = resources.getDimension(R.dimen.poster_height).toInt()
 
-            mainImageView?.loadImage(
-                url = photo.url,
-                posterHeight = posterHeight,
-                posterWidth = posterWidth
-            )
-            setTitle(photo.title)
-            setSubTitle("${photo.authorName} / ${photo.publishDate}")
+                mainImageView?.loadImage(
+                    url = item.url,
+                    posterHeight = posterHeight,
+                    posterWidth = posterWidth
+                )
+                setTitle(item.title)
+                setSubTitle("${item.authorName} / ${item.publishDate}")
+            }
         }
+
     }
 
     override fun onUnbindViewHolder(viewHolder: ViewHolder) {

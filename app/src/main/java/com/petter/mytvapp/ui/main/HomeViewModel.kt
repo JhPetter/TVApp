@@ -20,14 +20,21 @@ class HomeViewModel @Inject constructor(private val fetchPhotosAction: FetchPhot
     }
     val photoListStateFlow: StateFlow<List<Photo>> = photoListMutableStateFlow
 
+    private val photoLoadingMutableStateFlow: MutableStateFlow<Boolean> by lazy {
+        MutableStateFlow(true)
+    }
+    val photoLoadingStateFlow: StateFlow<Boolean> = photoLoadingMutableStateFlow
+
     init {
         loadPhotos()
     }
 
     private fun loadPhotos() {
         viewModelScope.launch {
+            photoLoadingMutableStateFlow.tryEmit(true)
             val page = fetchPhotosAction.invoke(1)
             photoListMutableStateFlow.tryEmit(page.photos)
+            photoLoadingMutableStateFlow.tryEmit(false)
         }
     }
 }
