@@ -11,3 +11,7 @@ fun ImageView.loadImage(url: String, posterWidth: Int, posterHeight: Int) {
         allowHardware(false)
     })
 }
+
+fun ImageView.loadImage(url: String) {
+    load(url)
+}
