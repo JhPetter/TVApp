@@ -18,7 +18,8 @@ class ApiInterceptor(private val context: Context, private val apiKey: String) :
 
         val url = originalHttpUrl.newBuilder()
             .addQueryParameter("api_key", apiKey)
-            .addQueryParameter("format","json&nojsoncallback=1")
+            .addQueryParameter("format", "json")
+            .addQueryParameter("nojsoncallback", "1")
             .build()
         val requestBuilder: Request.Builder = original.newBuilder()
             .url(url)
