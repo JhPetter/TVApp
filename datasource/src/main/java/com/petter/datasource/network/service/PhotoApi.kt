@@ -9,6 +9,6 @@ interface PhotoApi {
     @GET("?method=flickr.interestingness.getList&extras=date_taken,url_h,owner_name&per_page=10")
     suspend fun fetchPhotos(@Query("page") page: Int): BaseResponse<PhotoResponse>
 
-    @GET("?method=flickr.photos.search&extras=date_taken,url_h,owner_name&text=flags&per_page=10")
-    suspend fun searchPhotos(query: String, @Query("page") page: Int): BaseResponse<PhotoResponse>
+    @GET("?method=flickr.photos.search&extras=date_taken,url_h,owner_name&per_page=10")
+    suspend fun searchPhotos(@Query("text")query: String, @Query("page") page: Int): BaseResponse<PhotoResponse>
 }

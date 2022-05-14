@@ -22,7 +22,6 @@ class PhotoPresenter : Presenter() {
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, item: Any) {
-        println("Here: onBindViewHolder $item")
         if (item is Photo) {
             with(viewHolder.view as PhotoCardView) {
                 val posterWidth = resources.getDimension(R.dimen.poster_width).toInt()

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/navHomeOpenDetail"
             app:destination="@+id/navDetail" />
+        <action
+            android:id="@+id/navHomeOpenSearch"
+            app:destination="@id/navSearch" />
     </fragment>
     <fragment
         android:id="@+id/navDetail"
@@ -26,6 +29,14 @@
         <argument
             android:name="photos"
             app:argType="com.petter.entity.Photo[]" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navSearch"
+        android:name="com.petter.mytvapp.ui.search.SearchFragment">
+        <action
+            android:id="@+id/navSearchOpenDetail"
+            app:destination="@+id/navDetail" />
     </fragment>
 
 </navigation>

@@ -47,26 +47,38 @@ class HomeFragment : VerticalGridSupportFragment() {
 
     private fun configActions() {
         setOnSearchClickedListener {
-            println("Here: setOnSearchClickedListener")
+            openSearch()
         }
-        setOnItemViewClickedListener { itemViewHolder, item, rowViewHolder, row ->
-            println("Here: setOnItemViewClickedListener")
-            if (item is Photo) {
-                val photos: List<Photo> = mAdapter.getAllItems() as List<Photo>
-                val action = HomeFragmentDirections.navHomeOpenDetail(0, photos.toTypedArray())
 
-                findNavController().navigate(
-                    action,
-                    NavOptions.Builder().setPopUpTo(R.id.navDetail, true).build()
-                )
+        setOnItemViewClickedListener { _, item, _, _ ->
+            if (item is Photo) {
+                val position = mAdapter.getAllItems().indexOf(item)
+                val photos: List<Photo> = mAdapter.getAllItems() as List<Photo>
+                openDetail(position, photos)
             }
         }
+    }
+
+    private fun openSearch() {
+        val action = HomeFragmentDirections.navHomeOpenSearch()
+        findNavController().navigate(
+            action,
+            NavOptions.Builder().setPopUpTo(R.id.navSearch, true).build()
+        )
+    }
+
+    private fun openDetail(position: Int, photos: List<Photo>) {
+        val action = HomeFragmentDirections.navHomeOpenDetail(position, photos.toTypedArray())
+
+        findNavController().navigate(
+            action,
+            NavOptions.Builder().setPopUpTo(R.id.navDetail, true).build()
+        )
     }
 
     private fun observeViewModel() {
         lifecycleScope.launch {
             homeViewModel.photoListStateFlow.collect {
-                println("Here: size of photos ${it.size}")
                 mAdapter.addAllItems(it)
             }
         }
